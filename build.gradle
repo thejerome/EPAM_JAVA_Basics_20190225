@@ -1,0 +1,21 @@
+plugins {
+    id "java"
+}
+repositories {
+    mavenCentral()
+    jcenter()
+}
+compileJava.options.encoding = 'UTF-8'
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+dependencies {
+    compile "org.apache.commons:commons-lang3:3.4"
+    compile "com.google.guava:guava:22.0"
+    testCompile "org.junit.jupiter:junit-jupiter-api:5.2.0"
+    testRuntime "org.junit.jupiter:junit-jupiter-engine:5.2.0"
+}
+wrapper.gradleVersion = '4.8'
+test {
+    useJUnitPlatform()
+}
