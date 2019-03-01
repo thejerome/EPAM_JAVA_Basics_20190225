@@ -31,13 +31,60 @@ package ru.ifmo.cet.javabasics;
  * Нужно ограничить возможность взятия бутылок натуральным число не более 99 бутылок за раз.
  */
 public class BottleSong {
-
+    int bottleStep;
     public BottleSong(int bottleTakenAtOnce) {
-        //TODO
+        if (bottleTakenAtOnce<1||bottleTakenAtOnce>99){
+            bottleStep=0;
+        } else {
+            bottleStep=bottleTakenAtOnce;
+        }
     }
 
+
+    static String[] lessThan20 = { "", "one", "two", "three", "four","five",
+            "six", "seven", "eight", "nine", "ten",
+            "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+            "sixteen", "seventeen", "eighteen", "nineteen"};
+
+    static String[] multipleOf10 = {"", "", "twenty", "thirty", "forty", "fifty",
+            "sixty", "seventy", "eighty", "ninety"};
+
+    /**
+     * Convert int in [1;99] range to String
+     * @param i - integer to be converted
+     * @return String representation of {@param i}
+     */
+    private static String intToString(int i){
+        if (i<20){
+            return lessThan20[i];
+        } else {
+            return multipleOf10[i/10]+(i%10==0 ? "" : " "+lessThan20[i%10]);
+        }
+    }
+
+
     public String getBottleSongLyrics() {
-        //TODO
-        throw new UnsupportedOperationException();
+        if (bottleStep == 0){
+            throw new IllegalArgumentException("\"Bottle taking\" step should be in [1;99] range!");
+        }
+        StringBuilder builder = new StringBuilder();
+        int countOfBottles=99;
+        String bottleStepString=intToString(bottleStep);
+        String amountOfBottlesString="99 bottles";
+        while (countOfBottles>bottleStep){
+            builder.append(String.format("%s of beer on the wall, %s of beer.\n",amountOfBottlesString,amountOfBottlesString));
+            countOfBottles-=bottleStep;
+            amountOfBottlesString=countOfBottles+" bottle"+(countOfBottles<2 ? "" : "s");
+            builder.append(String.format("Take %s down and pass around, %s of beer on the wall.\n",bottleStepString,amountOfBottlesString));
+        }
+
+        builder.append(String.format(   "%s of beer on the wall, %s of beer.\n" +
+                                        "Take %s down and pass around, no more bottles of beer on the wall.\n" +
+                                        "No more bottles of beer on the wall, no more bottles of beer.\n" +
+                                        "Go to the store and buy some more, 99 bottles of beer on the wall.\n",
+                                        amountOfBottlesString,
+                                        amountOfBottlesString,
+                                        intToString(countOfBottles)));
+        return builder.toString();
     }
 }
