@@ -65,7 +65,7 @@ public class BottleSong {
 
     public String getBottleSongLyrics() {
         if (bottleStep == 0){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("\"Bottle taking\" step should be in [1;99] range!");
         }
         StringBuilder builder = new StringBuilder();
         int countOfBottles=99;
