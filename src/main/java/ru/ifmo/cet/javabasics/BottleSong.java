@@ -33,7 +33,7 @@ package ru.ifmo.cet.javabasics;
 public class BottleSong {
 
     public BottleSong(int bottleTakenAtOnce) {
-        //TODO
+        int i = 0;
     }
 
     public String getBottleSongLyrics() {
