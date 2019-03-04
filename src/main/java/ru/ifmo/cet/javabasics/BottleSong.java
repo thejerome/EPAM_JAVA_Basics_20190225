@@ -61,31 +61,23 @@ public class BottleSong {
 
     public String getBottleSongLyrics() {
         StringBuilder sb = new StringBuilder ();
-        int i = 99;
+        int bottlesLeft = 99;
 
-        while (i > 0) {
-            if (i == 1)
-                sb.append (i).append (" bottle of beer on the wall, ").append (i).append (" bottle of beer.\n");
-            else
-                sb.append (i).append (" bottles of beer on the wall, ").append (i).append (" bottles of beer.\n");
+        while (bottlesLeft > 0) {
+            sb.append (bottlesLeft).append ((bottlesLeft == 1) ? " bottle" : " bottles").
+                    append (" of beer on the wall, ").append (bottlesLeft).
+                    append ((bottlesLeft == 1) ? " bottle" : " bottles").append (" of beer.\n");
 
-            if (i <= bottleTakenAtOnce) {
-                if (i == 1)
-                    sb.append ("Take ").append (number (i)).
-                        append (" down and pass around, no more bottles of beer on the wall.\n");
-                else
-                    sb.append ("Take ").append (number (i)).
+            if (bottlesLeft <= bottleTakenAtOnce) {
+                    sb.append ("Take ").append (number (bottlesLeft)).
                         append (" down and pass around, no more bottles of beer on the wall.\n");
 
-                i = 0;
+                bottlesLeft = 0;
             } else {
-                i -= bottleTakenAtOnce;
-                sb.append ("Take ").append (number (bottleTakenAtOnce)).append (" down and pass around, ").append (i);
-
-                if (i == 1)
-                    sb.append (" bottle of beer on the wall.\n");
-                else
-                    sb.append (" bottles of beer on the wall.\n");
+                bottlesLeft -= bottleTakenAtOnce;
+                sb.append ("Take ").append (number (bottleTakenAtOnce)).append (" down and pass around, ").
+                        append (bottlesLeft).append ((bottlesLeft == 1) ? " bottle" : " bottles").
+                        append (" of beer on the wall.\n");
             }
         }
 
