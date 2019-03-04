@@ -12,7 +12,7 @@ class BottleSongTest {
 
     @Test
     public void test1(){
-        final String bottleSongLyrics = new ru.ifmo.cet.javabasics.BottleSong (1).getBottleSongLyrics();
+        final String bottleSongLyrics = new BottleSong (1).getBottleSongLyrics();
         assertEquals(
             "99 bottles of beer on the wall, 99 bottles of beer.\n" +
                 "Take one down and pass around, 98 bottles of beer on the wall.\n" +
