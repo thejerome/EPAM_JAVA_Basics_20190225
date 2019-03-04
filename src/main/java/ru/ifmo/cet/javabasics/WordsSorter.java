@@ -2,8 +2,8 @@ package ru.ifmo.cet.javabasics;
 
 import java.util.*;
 
-public class WordsSorter {
-    public HashMap<String, Integer> sortWords(HashMap<String, Integer> map) {
+class WordsSorter {
+    HashMap<String, Integer> sortWords(HashMap<String, Integer> map) {
         LinkedHashMap<String, Integer> sorted = new LinkedHashMap<> ();
 
         Set<Map.Entry<String, Integer>> set = map.entrySet ();
