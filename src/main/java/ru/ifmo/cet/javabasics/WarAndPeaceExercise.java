@@ -56,7 +56,7 @@ public class WarAndPeaceExercise {
 
     private static SortedSet<Map.Entry<String,Integer>> entriesSortedByValues(Map<String,Integer> map) {
         SortedSet<Map.Entry<String,Integer>> sortedEntries = new TreeSet<>(
-                new Comparator<>() {
+                new Comparator<Map.Entry<String, Integer>>() {
                     @Override
                     public int compare(Map.Entry<String, Integer> e1, Map.Entry<String, Integer> e2) {
                         int res = -e1.getValue().compareTo(e2.getValue());
