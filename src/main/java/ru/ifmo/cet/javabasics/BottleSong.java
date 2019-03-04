@@ -1,26 +1,18 @@
 package ru.ifmo.cet.javabasics;
-
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.Formatter;
-import java.util.Properties;
-
 
 public class BottleSong {
 
     public String song;
-    Properties properties = new Properties();
+    private final String[] UNITS = new String[] {"", "one", "two", "three", "four", "five",
+           "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen",
+           "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
+    private final String[] TENS = new String[] {"", "","twenty", "thirty", "forty", "fifty",
+            "sixty", "seventy", "eighty", "ninety"};
 
     public BottleSong(int bottleTakenAtOnce) {
         if (bottleTakenAtOnce < 1 || bottleTakenAtOnce > 99)
             throw new IllegalArgumentException();
-
-        try (FileInputStream propertyStream =
-                     new FileInputStream("src\\main\\resources\\numberByWord.properties")) {
-            properties.load(propertyStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         song = makingSong(bottleTakenAtOnce);
     }
 
@@ -49,15 +41,13 @@ public class BottleSong {
     public String getWordByNumber(int bottles) {
         int tens;
         int units;
-        if (bottles > 19 && bottles % 10 != 0) {
+        if (bottles > 19) {
             units = bottles % 10;
-            tens = (bottles / 10) * 10;
-
-            return properties.getProperty(String.valueOf(tens)) +
-                    " " + properties.getProperty(String.valueOf(units));
-
+            tens = (bottles / 10);
+            String result = "" + TENS[tens] + " " + UNITS[units];
+            return result.trim();
         } else {
-            return properties.getProperty(String.valueOf(bottles));
+            return UNITS[bottles];
         }
     }
 
