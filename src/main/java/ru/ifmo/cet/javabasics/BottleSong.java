@@ -94,7 +94,7 @@ public class BottleSong {
             formatter.format("Take%1$s down and pass around, %2$d %3$s of beer on the wall.\n", takeAtOnce, currentBottles, bottle);
         }
         if (currentBottles - bottleTakenAtOnce <= 0) {
-            formatter.format("%1$d %2$s of beer on the wall, %1$d %2$s of beer.%n", currentBottles, bottle)
+            formatter.format("%1$d %2$s of beer on the wall, %1$d %2$s of beer.\n", currentBottles, bottle)
                     .format("Take%1$s down and pass around, no more bottles of beer on the wall.\n", generateNumbersByWord(currentBottles))
                     .format("No more bottles of beer on the wall, no more bottles of beer.\n")
                     .format("Go to the store and buy some more, 99 bottles of beer on the wall.\n");
