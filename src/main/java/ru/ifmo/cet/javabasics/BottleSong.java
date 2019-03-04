@@ -31,13 +31,66 @@ package ru.ifmo.cet.javabasics;
  * Нужно ограничить возможность взятия бутылок натуральным число не более 99 бутылок за раз.
  */
 public class BottleSong {
+    private int bottleTakenAtOnce;
+
+    private static final String[] units = {
+            "", "one", "two", "three", "four", "five", "six", "seven",
+            "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen",
+            "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"
+    };
+
+    private static final String[] tens = {
+            "",        // 0
+            "",        // 1
+            "twenty",  // 2
+            "thirty",  // 3
+            "forty",   // 4
+            "fifty",   // 5
+            "sixty",   // 6
+            "seventy", // 7
+            "eighty",  // 8
+            "ninety"   // 9
+    };
 
     public BottleSong(int bottleTakenAtOnce) {
-        //TODO
+        if (bottleTakenAtOnce <= 0 || bottleTakenAtOnce > 99)
+            throw new IllegalArgumentException ();
+
+        this.bottleTakenAtOnce = bottleTakenAtOnce;
     }
 
     public String getBottleSongLyrics() {
-        //TODO
-        throw new UnsupportedOperationException();
+        StringBuilder sb = new StringBuilder ();
+        int bottlesLeft = 99;
+
+        while (bottlesLeft > 0) {
+            sb.append (bottlesLeft).append ((bottlesLeft == 1) ? " bottle" : " bottles").
+                    append (" of beer on the wall, ").append (bottlesLeft).
+                    append ((bottlesLeft == 1) ? " bottle" : " bottles").append (" of beer.\n");
+
+            if (bottlesLeft <= bottleTakenAtOnce) {
+                    sb.append ("Take ").append (convertNumber (bottlesLeft)).
+                        append (" down and pass around, no more bottles of beer on the wall.\n");
+
+                bottlesLeft = 0;
+            } else {
+                bottlesLeft -= bottleTakenAtOnce;
+                sb.append ("Take ").append (convertNumber (bottleTakenAtOnce)).append (" down and pass around, ").
+                        append (bottlesLeft).append ((bottlesLeft == 1) ? " bottle" : " bottles").
+                        append (" of beer on the wall.\n");
+            }
+        }
+
+        sb.append("No more bottles of beer on the wall, no more bottles of beer.\n").
+           append("Go to the store and buy some more, 99 bottles of beer on the wall.\n");
+
+        return sb.toString ();
+//        throw new UnsupportedOperationException();
+    }
+
+    private static String convertNumber(int i) {
+        if (i < 20)
+            return units[i];
+        else return tens[i / 10] + ((i % 10 != 0) ? " " : "") + units[i % 10];
     }
 }
