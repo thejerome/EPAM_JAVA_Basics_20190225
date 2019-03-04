@@ -20,7 +20,7 @@ class WarAndPeaceExercise {
     }
 
     private static void readAndPutInDictionary(File file) {
-        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file)))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "windows-1251"))) {
             while (bufferedReader.ready()) {
                 String[] strings = bufferedReader.readLine().split("[^а-яА-Яa-zA-Z]");
                 for (String word : strings) {
