@@ -69,13 +69,13 @@ public class BottleSong {
                     append ((bottlesLeft == 1) ? " bottle" : " bottles").append (" of beer.\n");
 
             if (bottlesLeft <= bottleTakenAtOnce) {
-                    sb.append ("Take ").append (number (bottlesLeft)).
+                    sb.append ("Take ").append (convertNumber (bottlesLeft)).
                         append (" down and pass around, no more bottles of beer on the wall.\n");
 
                 bottlesLeft = 0;
             } else {
                 bottlesLeft -= bottleTakenAtOnce;
-                sb.append ("Take ").append (number (bottleTakenAtOnce)).append (" down and pass around, ").
+                sb.append ("Take ").append (convertNumber (bottleTakenAtOnce)).append (" down and pass around, ").
                         append (bottlesLeft).append ((bottlesLeft == 1) ? " bottle" : " bottles").
                         append (" of beer on the wall.\n");
             }
@@ -88,7 +88,7 @@ public class BottleSong {
 //        throw new UnsupportedOperationException();
     }
 
-    private static String number(int i) {
+    private static String convertNumber(int i) {
         if (i < 20)
             return units[i];
         else return tens[i / 10] + ((i % 10 != 0) ? " " : "") + units[i % 10];
