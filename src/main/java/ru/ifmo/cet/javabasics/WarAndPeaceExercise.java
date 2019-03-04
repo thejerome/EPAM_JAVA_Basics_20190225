@@ -21,7 +21,7 @@ public class WarAndPeaceExercise {
     }
 
     private static void readAndPutInDictionary(File file) {
-        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file)))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "windows-1251"))) {
                 bufferedReader.lines().forEach(a -> vault.append(" ").append(a));
         } catch (IOException e) {
             e.printStackTrace();

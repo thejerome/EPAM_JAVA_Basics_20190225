@@ -28,7 +28,7 @@ class WarAndPeaceExerciseTest {
             "src", "main", "java", "ru", "ifmo", "cet", "javabasics", "WarAndPeaceExercise.java"
         )).stream().collect(Collectors.joining("\n"));
 
-        //assertFalse(matchesRegex(source, "\\Wif\\W"));
+        assertFalse(matchesRegex(source, "\\Wif\\W"));
         assertFalse(matchesRegex(source, "\\Wfor\\W"));
         assertFalse(matchesRegex(source, "\\Wwhile\\W"));
 
