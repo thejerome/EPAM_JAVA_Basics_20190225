@@ -59,11 +59,11 @@ public class WarAndPeaceExercise {
         }
         @Override
         public int compare(String s1, String s2) {
-            int comparing = map.get(s2) - map.get(s1);
-            if (comparing == 0) {
+            int c = map.get(s2) - map.get(s1);
+            if (c == 0) {
                 return s1.compareTo(s2);
             }
-            return comparing;
+            return c;
         }
     }
 
