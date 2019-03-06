@@ -3,14 +3,10 @@ package ru.ifmo.cet.javabasics;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.io.*;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class WarAndPeaceExercise {
 
-    private static String result;
     private static BufferedReader br;
     private static Map<String, Integer> map = new HashMap<String, Integer>();
 
@@ -25,9 +21,7 @@ public class WarAndPeaceExercise {
             e.printStackTrace();
         }
 
-
-
-        return result;
+        return turnMapToString(sortTheMap(map));
     }
 
 
@@ -49,7 +43,7 @@ public class WarAndPeaceExercise {
             }
         }
     }
-    private static Map<String, Integer> sortTheWords(Map<String, Integer> map) {
+    private static Map<String, Integer> sortTheMap(Map<String, Integer> map) {
         Map<String, Integer> sortedMap = new TreeMap<String, Integer>(new sortedMapComparator(map));
         sortedMap.putAll(map);
         for (Map.Entry<String, Integer> m : map.entrySet()) {
@@ -57,6 +51,7 @@ public class WarAndPeaceExercise {
                 map.remove(m.getKey());
             }
         }
+        return sortedMap;
     }
     private static class sortedMapComparator implements Comparator<String> {
         private Map<String, Integer> map;
@@ -72,5 +67,11 @@ public class WarAndPeaceExercise {
             return comparing;
         }
     }
-
+    private static String turnMapToString(Map<String, Integer> map) {
+        Formatter formatter = new Formatter();
+        for (Map.Entry<String, Integer> m : map.entrySet()) {
+            formatter.format("%1$s - %2$d\n", m.getKey(), m.getValue());
+        }
+        return formatter.toString();
+    }
 }
