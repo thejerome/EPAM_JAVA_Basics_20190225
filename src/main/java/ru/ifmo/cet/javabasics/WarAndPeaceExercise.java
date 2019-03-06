@@ -61,14 +61,14 @@ public class WarAndPeaceExercise {
     private static List<Map.Entry<String, Integer>> mapToSortedList(Map<String, Integer> dictionary) {
         List<Map.Entry<String,Integer>> entries = new ArrayList<>(dictionary.entrySet());
 
-        Comparator<Map.Entry<String, Integer>> comparatorByValue = new Comparator<>() {
+        Comparator<Map.Entry<String, Integer>> comparatorByValue = new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
                 return -o1.getValue().compareTo(o2.getValue());
             }
         };
 
-        Comparator<Map.Entry<String, Integer>> comparatorByKey = new Comparator<>() {
+        Comparator<Map.Entry<String, Integer>> comparatorByKey = new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
                 return o1.getKey().compareTo(o2.getKey());
