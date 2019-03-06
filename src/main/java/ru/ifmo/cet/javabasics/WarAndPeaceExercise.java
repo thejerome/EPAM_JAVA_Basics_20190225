@@ -7,7 +7,6 @@ import java.util.*;
 
 public class WarAndPeaceExercise {
 
-    private static BufferedReader br;
     private static Map<String, Integer> map = new HashMap<String, Integer>();
 
     public static String warAndPeace() {
@@ -15,9 +14,7 @@ public class WarAndPeaceExercise {
         final Path tome34Path = Paths.get("src", "main", "resources", "WAP34.txt");
 
         try {
-            br = concatenateTomes(tome12Path, tome34Path);
-            countTheWordsToMap(br);
-            br.close();
+            countTheWordsToMap(tome12Path, tome34Path);
         } catch(IOException e) {
             e.printStackTrace();
         }
@@ -26,23 +23,12 @@ public class WarAndPeaceExercise {
     }
 
 
-    private static BufferedReader concatenateTomes(Path tome12, Path tome34) throws IOException {
-        BufferedReader bufferedReader;
-
-        /*
-        InputStream inputStream1 = new FileInputStream(tome12Path.toFile());
-        InputStream inputStream2 = new FileInputStream(tome34Path.toFile());
+    private static void countTheWordsToMap(Path tome12path, Path tome34path) throws IOException {
+        InputStream inputStream1 = new FileInputStream(tome12path.toFile());
+        InputStream inputStream2 = new FileInputStream(tome34path.toFile());
         InputStream inputStream = new SequenceInputStream(inputStream1, inputStream2);
-        return new BufferedReader(new InputStreamReader(inputStream, "windows-1251"));
-        */
+        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, "windows-1251"));
 
-        InputStream inputStream1 = new FileInputStream(tome12.toFile());
-        InputStream inputStream2 = new FileInputStream(tome34.toFile());
-        bufferedReader = new BufferedReader(new InputStreamReader(new SequenceInputStream(inputStream1, inputStream2), "windows-1251"));
-        return bufferedReader;
-    }
-
-    private static void countTheWordsToMap(BufferedReader br) throws IOException {
         while(br.ready()) {
             String[] s = br.readLine().toLowerCase().split("[^\\p{L}]");
             for (String word : s) {
