@@ -2,7 +2,7 @@ package ru.ifmo.cet.javabasics;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
+import java.io.*;
 
 public class WarAndPeaceExercise {
 
