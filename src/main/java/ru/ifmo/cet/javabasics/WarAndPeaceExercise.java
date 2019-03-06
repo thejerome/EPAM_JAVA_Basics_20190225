@@ -17,6 +17,7 @@ public class WarAndPeaceExercise {
         try {
             br = concatenateTomes(tome12Path, tome34Path);
             countTheWordsToMap(br);
+            br.close();
         } catch(IOException e) {
             e.printStackTrace();
         }
@@ -25,12 +26,22 @@ public class WarAndPeaceExercise {
     }
 
 
-    private static BufferedReader concatenateTomes(Path tome12Path, Path tome34Path) throws IOException {
+    private static BufferedReader concatenateTomes(Path tome12, Path tome34) throws IOException {
+        BufferedReader bufferedReader;
+
+        /*
         InputStream inputStream1 = new FileInputStream(tome12Path.toFile());
         InputStream inputStream2 = new FileInputStream(tome34Path.toFile());
         InputStream inputStream = new SequenceInputStream(inputStream1, inputStream2);
         return new BufferedReader(new InputStreamReader(inputStream, "windows-1251"));
+        */
+
+        InputStream inputStream1 = new FileInputStream(tome12.toFile());
+        InputStream inputStream2 = new FileInputStream(tome34.toFile());
+        bufferedReader = new BufferedReader(new InputStreamReader(new SequenceInputStream(inputStream1, inputStream2), "windows-1251"));
+        return bufferedReader;
     }
+
     private static void countTheWordsToMap(BufferedReader br) throws IOException {
         while(br.ready()) {
             String[] s = br.readLine().toLowerCase().split("[^\\p{L}]");
@@ -42,17 +53,21 @@ public class WarAndPeaceExercise {
                 }
             }
         }
+        br.close();
     }
+
     private static Map<String, Integer> sortTheMap(Map<String, Integer> map) {
-        Map<String, Integer> sortedMap = new TreeMap<String, Integer>(new sortedMapComparator(map));
-        sortedMap.putAll(map);
+        Map<String, Integer> filteredMap = new HashMap<String, Integer>();
         for (Map.Entry<String, Integer> m : map.entrySet()) {
-            if (m.getValue() < 10 || m.getKey().length() < 4) {
-                map.remove(m.getKey());
+            if (m.getValue() >= 10 && m.getKey().length() >= 4) {
+                filteredMap.put(m.getKey(), m.getValue());
             }
         }
-        return sortedMap;
+        Map<String, Integer> sortedAndFilteredMap = new TreeMap<String, Integer>(new sortedMapComparator(map));
+        sortedAndFilteredMap.putAll(filteredMap);
+        return sortedAndFilteredMap;
     }
+
     private static class sortedMapComparator implements Comparator<String> {
         private Map<String, Integer> map;
         private sortedMapComparator(Map<String, Integer> map) {
@@ -67,6 +82,7 @@ public class WarAndPeaceExercise {
             return comparing;
         }
     }
+
     private static String turnMapToString(Map<String, Integer> map) {
         Formatter formatter = new Formatter();
         for (Map.Entry<String, Integer> m : map.entrySet()) {
