@@ -7,14 +7,15 @@ import java.util.*;
 
 public class WarAndPeaceExercise {
 
-    private static Map<String, Integer> map = new HashMap<String, Integer>();
+    private static Map<String, Integer> map = new HashMap<>();
 
     public static String warAndPeace() {
         final Path tome12Path = Paths.get("src", "main", "resources", "WAP12.txt");
         final Path tome34Path = Paths.get("src", "main", "resources", "WAP34.txt");
 
         try {
-            countTheWordsToMap(tome12Path, tome34Path);
+            countTheWordsToMap(tome12Path);
+            countTheWordsToMap(tome34Path);
         } catch(IOException e) {
             e.printStackTrace();
         }
@@ -22,12 +23,9 @@ public class WarAndPeaceExercise {
         return turnMapToString(sortTheMap(map));
     }
 
-
-    private static void countTheWordsToMap(Path tome12path, Path tome34path) throws IOException {
-        InputStream inputStream1 = new FileInputStream(tome12path.toFile());
-        InputStream inputStream2 = new FileInputStream(tome34path.toFile());
-        InputStream inputStream = new SequenceInputStream(inputStream1, inputStream2);
-        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, "windows-1251"));
+    private static void countTheWordsToMap(Path tomePath) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(
+                new File(String.valueOf(tomePath))), "windows-1251"));
 
         while(br.ready()) {
             String[] s = br.readLine().toLowerCase().split("[^\\p{L}]");
@@ -43,13 +41,13 @@ public class WarAndPeaceExercise {
     }
 
     private static Map<String, Integer> sortTheMap(Map<String, Integer> map) {
-        Map<String, Integer> filteredMap = new HashMap<String, Integer>();
+        Map<String, Integer> filteredMap = new HashMap<>();
         for (Map.Entry<String, Integer> m : map.entrySet()) {
             if (m.getValue() >= 10 && m.getKey().length() >= 4) {
                 filteredMap.put(m.getKey(), m.getValue());
             }
         }
-        Map<String, Integer> sortedAndFilteredMap = new TreeMap<String, Integer>(new sortedMapComparator(map));
+        Map<String, Integer> sortedAndFilteredMap = new TreeMap<>(new sortedMapComparator(map));
         sortedAndFilteredMap.putAll(filteredMap);
         return sortedAndFilteredMap;
     }
@@ -74,6 +72,6 @@ public class WarAndPeaceExercise {
         for (Map.Entry<String, Integer> m : map.entrySet()) {
             formatter.format("%1$s - %2$d\n", m.getKey(), m.getValue());
         }
-        return formatter.toString();
+        return formatter.toString().trim();
     }
 }
