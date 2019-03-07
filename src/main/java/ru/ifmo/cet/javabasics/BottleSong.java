@@ -32,7 +32,7 @@ package ru.ifmo.cet.javabasics;
  */
 public class BottleSong {
 
-    private int bottleTakenAtOnce;
+    private final int bottleTakenAtOnce;
     private int bottleCount = 99;
     public BottleSong(int bottleTakenAtOnce) {
         if(bottleTakenAtOnce < 1 || bottleTakenAtOnce > 99){
@@ -63,8 +63,6 @@ public class BottleSong {
         return sb.toString();
     }
     private String numToString(int i){
-        String tens="";
-        String ones="";
         if( i > 9 && i < 20){
             switch(i){
                 case 10: return "ten ";
@@ -77,29 +75,11 @@ public class BottleSong {
                 case 17: return "seventeen ";
                 case 18: return "eighteen ";
                 case 19: return "nineteen ";
+                default: return "Codacy want to put default in this switch";
             }
         }
-        switch(i/10){
-            case 2: tens = "twenty "; break;
-            case 3: tens = "thirty "; break;
-            case 4: tens = "forty "; break;
-            case 5: tens = "fifty "; break;
-            case 6: tens = "sixty "; break;
-            case 7: tens = "seventy "; break;
-            case 8: tens = "eighty "; break;
-            case 9: tens = "ninety "; break;
-        }
-        switch(i%10){
-            case 1: ones ="one ";break;
-            case 2: ones ="two ";break;
-            case 3: ones = "three ";break;
-            case 4: ones = "four "; break;
-            case 5: ones = "five ";break;
-            case 6: ones = "six ";break;
-            case 7: ones = "seven "; break;
-            case 8: ones = "eight ";break;
-            case 9: ones = "nine ";break;
-        }
+        String tens = cntTens(i);
+        String ones = cntOnes(i);
         return tens + ones;
     }
     private String bottlesOnWall(int i){
@@ -113,5 +93,36 @@ public class BottleSong {
             return " bottles of beer";
         }
         return " bottle of beer";
+    }
+    private String cntTens(int i){
+        String tens;
+        switch(i/10){
+            case 2: tens = "twenty "; break;
+            case 3: tens = "thirty "; break;
+            case 4: tens = "forty "; break;
+            case 5: tens = "fifty "; break;
+            case 6: tens = "sixty "; break;
+            case 7: tens = "seventy "; break;
+            case 8: tens = "eighty "; break;
+            case 9: tens = "ninety "; break;
+            default: tens = "";break;
+        }
+        return tens;
+    }
+    private String cntOnes(int i){
+        String ones;
+        switch(i%10){
+            case 1: ones ="one ";break;
+            case 2: ones ="two ";break;
+            case 3: ones = "three ";break;
+            case 4: ones = "four "; break;
+            case 5: ones = "five ";break;
+            case 6: ones = "six ";break;
+            case 7: ones = "seven "; break;
+            case 8: ones = "eight ";break;
+            case 9: ones = "nine ";break;
+            default: ones = "";break;
+        }
+        return ones;
     }
 }
