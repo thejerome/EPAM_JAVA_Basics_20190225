@@ -2,13 +2,11 @@ package ru.ifmo.cet.javabasics;
 
 import java.util.*;
 
-class WordsSorter {
-    HashMap<String, Integer> sortWords(HashMap<String, Integer> map) {
+public class WordsSorter {
+    public HashMap<String, Integer> sortWords(HashMap<String, Integer> map) {
         LinkedHashMap<String, Integer> sorted = new LinkedHashMap<> ();
 
-        Set<Map.Entry<String, Integer>> set = map.entrySet ();
-
-        List<Map.Entry<String, Integer>> list = new ArrayList<> (set);
+        List<Map.Entry<String, Integer>> list = new ArrayList<> (map.entrySet ());
 
         Collections.sort (list, new Comparator<Map.Entry<String, Integer>> () {
             @Override
