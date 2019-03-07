@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class WordsSorterTest {
 
     @Test
-    void sortWords() {
+    public void sortWords() {
         LinkedHashMap<String, Integer> expected = new LinkedHashMap<> ();
         expected.put ("портрет", 50);
         expected.put ("кружка", 40);

@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class WordsCounterTest {
 
     @Test
-    void countWords() {
+    public void countWords() {
         List<String> list = new LinkedList<> ();
         list.add ("пряник");
         list.add ("кошка");

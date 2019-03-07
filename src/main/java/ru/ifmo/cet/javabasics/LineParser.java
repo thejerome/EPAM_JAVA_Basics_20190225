@@ -1,9 +1,12 @@
 package ru.ifmo.cet.javabasics;
 
+import com.google.common.annotations.VisibleForTesting;
+
 import java.util.LinkedList;
 import java.util.List;
 
 public class LineParser {
+    @VisibleForTesting
     public List<String> parseLine(String line) {
         List<String> list = new LinkedList<> ();
 

@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class LineParserTest {
 
     @Test
-    void parseLine() {
+    public void parseLine() {
         LineParser parser = new LineParser ();
 
         String test = "– Que voulez vous? Lafater aurait dit que je n'ai pas la bosse de la paterienite, [Чего вы хотите? Лафатер сказал бы, что у меня нет шишки родительской любви,] – сказал князь.";
