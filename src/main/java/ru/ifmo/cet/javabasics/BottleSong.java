@@ -144,13 +144,14 @@ public class BottleSong {
     private static String convertNumbersToWords(int number) {
         String numberWords;
         String space;
+        int num = number;
 
         if (number % 100 < 20){ // numbers less than twenty
             numberWords = numNames[number % 100];
         }
         else { // numbers from twenty and above
             numberWords = numNames[number % 10];
-            number /= 10;
+            num /= 10;
 
             if (numberWords.isEmpty()){
                 space = "";
@@ -158,7 +159,7 @@ public class BottleSong {
                 space = " ";
             }
 
-            numberWords = tensNames[number % 10] + space + numberWords;
+            numberWords = tensNames[num % 10] + space + numberWords;
         }
 
         return numberWords;
