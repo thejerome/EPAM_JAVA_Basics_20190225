@@ -1,7 +1,5 @@
 package ru.ifmo.cet.javabasics;
 
-import com.sun.source.tree.Tree;
-
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -29,7 +27,7 @@ public class WarAndPeaceExercise {
 
         List<Map.Entry<String, Integer>> list = new ArrayList<>(resultTome1234.entrySet());
 
-        Comparator<Map.Entry<String, Integer>> comparator = new Comparator<>() {
+        Comparator<Map.Entry<String, Integer>> comparator = new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> a, Map.Entry<String, Integer> b) {
                 if (a.getValue().equals(b.getValue())) {
