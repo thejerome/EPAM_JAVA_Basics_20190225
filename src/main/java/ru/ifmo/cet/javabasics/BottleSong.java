@@ -1,8 +1,5 @@
 package ru.ifmo.cet.javabasics;
 
-import java.util.Locale;
-import java.util.ResourceBundle;
-
 /**
  * Нужно реализовать констурктор и метод, возвращающий слова песни про бутылки на стене.
  * <p>
@@ -84,7 +81,6 @@ public class BottleSong {
         String bottleWord;
         String bottlesLeftWord;
         StringBuilder song = new StringBuilder();
-        Locale locale = new Locale("en", "US");
 
         while (bottlesLeft >= bottleTakenAtOnce){
 
