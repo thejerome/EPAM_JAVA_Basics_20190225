@@ -34,6 +34,40 @@ import java.util.ResourceBundle;
  * Нужно ограничить возможность взятия бутылок натуральным число не более 99 бутылок за раз.
  */
 public class BottleSong {
+    private static final String[] tensNames = {
+            "",
+            "ten",
+            "twenty",
+            "thirty",
+            "forty",
+            "fifty",
+            "sixty",
+            "seventy",
+            "eighty",
+            "ninety"
+    };
+    private static final String[] numNames = {
+            "",
+            "one",
+            "two",
+            "three",
+            "four",
+            "five",
+            "six",
+            "seven",
+            "eight",
+            "nine",
+            "ten",
+            "eleven",
+            "twelve",
+            "thirteen",
+            "fourteen",
+            "fifteen",
+            "sixteen",
+            "seventeen",
+            "eighteen",
+            "nineteen"
+    };
     private int bottleTakenAtOnce;
 
     public BottleSong(int bottleTakenAtOnce) {
@@ -51,7 +85,6 @@ public class BottleSong {
         String bottlesLeftWord;
         StringBuilder song = new StringBuilder();
         Locale locale = new Locale("en", "US");
-        ResourceBundle bundle = ResourceBundle.getBundle("ru.ifmo.cet.javabasics.Numbers", locale);
 
         while (bottlesLeft >= bottleTakenAtOnce){
 
@@ -78,7 +111,7 @@ public class BottleSong {
                 bottlesLeftWord = String.valueOf(bottlesLeft);
             }
 
-            String secondSentence = "Take " + bundle.getString(String.valueOf(bottleTakenAtOnce)) +
+            String secondSentence = "Take " + convertNumbersToWords(bottleTakenAtOnce) +
                     " down and pass around, " + bottlesLeftWord + " " + bottleWord + " of beer on the wall.\n";
 
             song.append(firstSentence);
@@ -99,7 +132,7 @@ public class BottleSong {
             bottleWord = "bottles";
             bottlesLeftWord = "no more";
 
-            String secondSentence = "Take " + bundle.getString(String.valueOf(bottlesLeft)) +
+            String secondSentence = "Take " + convertNumbersToWords(bottlesLeft) +
                     " down and pass around, " + bottlesLeftWord + " " + bottleWord + " of beer on the wall.\n";
 
             song.append(firstSentence);
@@ -110,5 +143,28 @@ public class BottleSong {
         song.append("Go to the store and buy some more, 99 bottles of beer on the wall.\n");
 
         return song.toString();
+    }
+
+    private static String convertNumbersToWords(int number) {
+        String numberWords;
+        String space;
+
+        if (number % 100 < 20){ // numbers less than twenty
+            numberWords = numNames[number % 100];
+        }
+        else { // numbers from twenty and above
+            numberWords = numNames[number % 10];
+            number /= 10;
+
+            if (numberWords.isEmpty()){
+                space = "";
+            }else {
+                space = " ";
+            }
+
+            numberWords = tensNames[number % 10] + space + numberWords;
+        }
+
+        return numberWords;
     }
 }
