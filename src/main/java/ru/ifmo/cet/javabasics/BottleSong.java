@@ -2,7 +2,7 @@ package ru.ifmo.cet.javabasics;
 
 public class BottleSong {
 
-int bottleTakenAtOnes;
+private int bottleTakenAtOnes;
 
     public BottleSong(int bottleTakenAtOnce) {
 
