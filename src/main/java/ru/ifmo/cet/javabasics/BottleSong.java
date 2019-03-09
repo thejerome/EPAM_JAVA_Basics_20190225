@@ -47,7 +47,8 @@ public class BottleSong {
         }
 
         int bottlesLeft = 99;
-        String bottleWord, bottlesLeftWord;
+        String bottleWord;
+        String bottlesLeftWord;
         StringBuilder song = new StringBuilder();
         Locale locale = new Locale("en", "US");
         ResourceBundle bundle = ResourceBundle.getBundle("ru.ifmo.cet.javabasics.Numbers", locale);
