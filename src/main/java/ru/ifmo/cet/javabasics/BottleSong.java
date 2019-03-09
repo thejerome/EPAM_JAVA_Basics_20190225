@@ -1,43 +1,73 @@
 package ru.ifmo.cet.javabasics;
 
-/**
- * Нужно реализовать констурктор и метод, возвращающий слова песни про бутылки на стене.
- * <p>
- * Слова следующие:
- * <p>
- * 99 bottles of beer on the wall, 99 bottles of beer
- * Take one down, pass it around, 98 bottles of beer
- * 98 bottles of beer on the wall, 98 bottles of beer
- * Take one down, pass it around, 97 bottles of beer
- * 97 bottles of beer on the wall, 97 bottles of beer
- * Take one down, pass it around, 96 bottles of beer
- * 96 bottles of beer on the wall, 96 bottles of beer
- * Take one down, pass it around, 95 bottles of beer
- * 95 bottles of beer on the wall, 95 bottles of beer
- * ...
- * <p>
- * 3 bottles of beer on the wall, 3 bottles of beer
- * Take one down, pass it around, 2 bottles of beer
- * 2 bottles of beer on the wall, 2 bottles of beer
- * Take one down, pass it around, 1 bottles of beer
- * 1 bottle of beer on the wall, 1 bottle of beer
- * Take one down, pass it around, no more bottles of beer on the wall
- * No more bottles of beer on the wall, no more bottles of beer
- * Go to the store and buy some more, 99 bottles of beer on the wall
- * <p>
- * Дело усложняется тем, что текст песни переменный:
- * За раз может быть взято несколько бутылок.
- * Значение передается в качестве параметра конструктора
- * Нужно ограничить возможность взятия бутылок натуральным число не более 99 бутылок за раз.
- */
 public class BottleSong {
 
+int bottleTakenAtOnes;
+
     public BottleSong(int bottleTakenAtOnce) {
-        //TODO
+
+        this.bottleTakenAtOnes = bottleTakenAtOnce;
+
     }
 
-    public String getBottleSongLyrics() {
-        //TODO
-        throw new UnsupportedOperationException();
+    public String getBottleSongLyrics(){
+
+        if (bottleTakenAtOnes > 99 || bottleTakenAtOnes < 1) {
+            throw new IllegalArgumentException();
+        }
+
+        StringBuilder bottleSongText = new StringBuilder();
+
+        for (int i = 99; i > 0; i--) {
+
+            if ((i - bottleTakenAtOnes) > 0) {
+                bottleSongText.append(i + " " + sinOrPlu(i) + " of beer on the wall, " + i + " " + sinOrPlu(i) +
+                        " of beer.\n" + "Take " + numberToLetter(bottleTakenAtOnes) + " down and pass around, " +
+                        (i - bottleTakenAtOnes) + " " + sinOrPlu(i - bottleTakenAtOnes) + " of beer on the wall.\n");
+                i = i + 1 - bottleTakenAtOnes;
+            } else if ((i - bottleTakenAtOnes) == 0){
+                bottleSongText.append(i + " " + sinOrPlu(i) + " of beer on the wall, " + i + " " + sinOrPlu(i) +
+                        " of beer.\n" + "Take " + numberToLetter(bottleTakenAtOnes) +
+                        " down and pass around, no more bottles of beer on the wall.\n" +
+                        "No more bottles of beer on the wall, no more bottles of beer.\n" +
+                        "Go to the store and buy some more, 99 bottles of beer on the wall.\n");
+                break;
+            } else {
+                bottleSongText.append(i + " " + sinOrPlu(i) + " of beer on the wall, " + i + " " + sinOrPlu(i) +
+                        " of beer.\n" + "Take " + numberToLetter(i) +
+                        " down and pass around, no more bottles of beer on the wall.\n" +
+                        "No more bottles of beer on the wall, no more bottles of beer.\n" +
+                        "Go to the store and buy some more, 99 bottles of beer on the wall.\n");
+                break;
+            }
+        }
+        return bottleSongText.toString();
+    }
+
+    public String numberToLetter(int n) {
+
+        String[] lessTwenty = new String[]{"", "one", "two", "three", "four", "five", "six", "seven", "eight",
+                "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen",
+                "eighteen", "nineteen"};
+
+        String[] tens = new String[]{"", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty",
+                "ninety"};
+
+        if (n < 20) {
+            return lessTwenty[n];
+        } else if (n%10 == 0) {
+            return tens[n/10];
+        } else {
+            return tens[n/10] + " " + lessTwenty[n%10];
+        }
+    }
+
+    public String sinOrPlu(int n) {
+
+        if (n == 1) {
+            return "bottle";
+        } else {
+            return "bottles";
+        }
     }
 }
