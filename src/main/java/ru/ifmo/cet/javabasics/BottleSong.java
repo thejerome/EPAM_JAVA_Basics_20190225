@@ -40,7 +40,7 @@ public class BottleSong {
         if ((bottleTakenAtOnce > 99) || (bottleTakenAtOnce < 1)){
             throw new IllegalArgumentException("Illegal argument");
         }
-        String Number = getWrittenNumber(bottleTakenAtOnce);
+        String Number = writtenNum(bottleTakenAtOnce);
         while (NumberOfBottlesOnTheWall > bottleTakenAtOnce) {
             BottleSongLyrics.append(getFirstString(NumberOfBottlesOnTheWall));
             BottleSongLyrics.append("\n");
@@ -55,7 +55,7 @@ public class BottleSong {
 
     private void ending(int Difference){
         BottleSongLyrics.append(getFirstString(NumberOfBottlesOnTheWall)).append("\n");
-        String WrittenNumber = getWrittenNumber(Difference);
+        String WrittenNumber = writtenNum(Difference);
         BottleSongLyrics.append("Take ").append(WrittenNumber).append("down and pass around, no more bottles of beer on the wall.\nNo more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n");
     }
 
@@ -63,7 +63,7 @@ public class BottleSong {
         return BottleSongStr;
     }
 
-    private String getWrittenNumber(int Number){
+    private String writtenNum(int Number){
         String WrittenNumber;
         String Firstpart;
         String Secondpart;
