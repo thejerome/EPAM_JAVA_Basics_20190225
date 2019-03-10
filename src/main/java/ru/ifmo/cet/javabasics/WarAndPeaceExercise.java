@@ -5,6 +5,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 class WarAndPeaceExercise {
@@ -23,37 +24,22 @@ class WarAndPeaceExercise {
     private String getResult() {
         StringBuilder result = new StringBuilder();
         this.sortByValue(this.result);
-        for (Map.Entry<String, Integer> entry : this.result.entrySet()) {
-            String key = entry.getKey();
-            Integer value = entry.getValue();
-            if (value < 10) continue;
-            result.append(key)
-                    .append(" - ")
-                    .append(value)
-                    .append("\n");
-        }
+        this.result.entrySet().stream()
+                .filter(o1 -> o1.getValue() >= 10)
+                .forEach(o1 -> result.append(o1.getKey())
+                                    .append(" - ")
+                                    .append(o1.getValue())
+                                    .append("\n"));
         result.deleteCharAt(result.lastIndexOf("\n"));
         return result.toString();
     }
 
     private void sortByValue(Map<String, Integer> mapToSort) {
-        // Create a list from elements of HashMap
-        List<Map.Entry<String, Integer>> list =
-                new LinkedList<>(mapToSort.entrySet());
-
-        // Sort the list
-        list.sort((o1, o2) -> {
-            if (o1.getValue().compareTo(o2.getValue()) == 0)
-                return o1.getKey().compareTo(o2.getKey());
-            return -(o1.getValue()).compareTo(o2.getValue());
-        });
-
-        // put data from sorted list to hashmap
-        HashMap<String, Integer> temp = new LinkedHashMap<>();
-        for (Map.Entry<String, Integer> aa : list) {
-            temp.put(aa.getKey(), aa.getValue());
-        }
-        this.result = temp;
+        this.result = mapToSort.entrySet().stream()
+                .sorted((o1, o2) ->
+                        o1.getValue().compareTo(o2.getValue()) == 0 ?
+                                o1.getKey().compareTo(o2.getKey()) : -(o1.getValue()).compareTo(o2.getValue()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (o1, o2) -> o1, LinkedHashMap::new));
     }
 
     private void readTheFile(Path fileToRead) {
@@ -61,19 +47,12 @@ class WarAndPeaceExercise {
                 new InputStreamReader(new FileInputStream(
                         new File(String.valueOf(fileToRead))), Charset.forName("windows-1251"))
         )) {
-            String temp;
-            while ((temp = reader.readLine()) != null) {
-                for (String word :
-                        temp.split("[^a-zA-Zа-яА-Я]")) {
-                    if (word != null && word.length() >= 4) {
-                        word = word.toLowerCase();
-                        int n = this.result.get(word) == null ? 0 : this.result.get(word);
-                        if (n >= 0) {
-                            this.result.put(word, ++n);
-                        }
-                    }
-                }
-            }
+            reader.lines().flatMap(word ->
+                            Arrays.stream(word.split("[^a-zA-Zа-яА-Я]"))
+                                    .map(String::toLowerCase)
+                                    .filter(str -> str.length() >= 4))
+                            .forEach(string -> this.result.put(string, this.result.get(string) == null ?
+                                                                                    1 : this.result.get(string) + 1));
         } catch (IOException e) {
             e.printStackTrace();
         }
