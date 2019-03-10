@@ -40,22 +40,22 @@ public class BottleSong {
         if ((bottleTakenAtOnce > 99) || (bottleTakenAtOnce < 1)){
             throw new IllegalArgumentException("Illegal argument");
         }
-        String Number = GetWrittenNumber(bottleTakenAtOnce);
+        String Number = getWrittenNumber(bottleTakenAtOnce);
         while (NumberOfBottlesOnTheWall > bottleTakenAtOnce) {
-            BottleSongLyrics.append(GetFirstString(NumberOfBottlesOnTheWall));
+            BottleSongLyrics.append(getFirstString(NumberOfBottlesOnTheWall));
             BottleSongLyrics.append("\n");
-            BottleSongLyrics.append(GetSecondString(NumberOfBottlesOnTheWall - bottleTakenAtOnce, Number));
+            BottleSongLyrics.append(getSecondString(NumberOfBottlesOnTheWall - bottleTakenAtOnce, Number));
             BottleSongLyrics.append("\n");
-            ClearBuilder(NumberOfBottlesOnTheWall, Number, bottleTakenAtOnce);
+            clearBuilder(NumberOfBottlesOnTheWall, Number, bottleTakenAtOnce);
             NumberOfBottlesOnTheWall = NumberOfBottlesOnTheWall - bottleTakenAtOnce;
         }
-        Ending(NumberOfBottlesOnTheWall);
+        ending(NumberOfBottlesOnTheWall);
         BottleSong = BottleSongLyrics.toString();
     }
 
-    private void Ending(int Difference){
-        BottleSongLyrics.append(GetFirstString(NumberOfBottlesOnTheWall)).append("\n");
-        String WrittenNumber = GetWrittenNumber(Difference);
+    private void ending(int Difference){
+        BottleSongLyrics.append(getFirstString(NumberOfBottlesOnTheWall)).append("\n");
+        String WrittenNumber = getWrittenNumber(Difference);
         BottleSongLyrics.append("Take ").append(WrittenNumber).append("down and pass around, no more bottles of beer on the wall.\nNo more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n");
     }
 
@@ -63,10 +63,10 @@ public class BottleSong {
         return BottleSong;
     }
 
-    private String GetWrittenNumber(int Number){
-        String WrittenNumber = "";
-        String Firstpart = "";
-        String Secondpart = "";
+    private String getWrittenNumber(int Number){
+        String WrittenNumber;
+        String Firstpart;
+        String Secondpart;
         int Edinitsi = Number % 10;
         int Desyatki = (Number - Edinitsi) / 10;
         if (Desyatki == 1){
@@ -98,6 +98,8 @@ public class BottleSong {
                 case 9:
                     WrittenNumber = "nineteen ";
                     break;
+                default:
+                    WrittenNumber = "";
             }
         }else {
             switch (Edinitsi) {
@@ -128,6 +130,8 @@ public class BottleSong {
                 case 9:
                     Secondpart = "nine ";
                     break;
+                default:
+                    Secondpart = "";
             }
             switch (Desyatki) {
                 case 2:
@@ -154,13 +158,15 @@ public class BottleSong {
                 case 9:
                     Firstpart = "ninety ";
                     break;
+                default:
+                    Firstpart = "";
             }
             WrittenNumber = Firstpart + Secondpart;
         }
         return WrittenNumber;
     }
 
-    private StringBuilder GetFirstString(int NumberOfBottles) {
+    private StringBuilder getFirstString(int NumberOfBottles) {
         if (NumberOfBottles >= 10) {
             FirstLine.insert(0, NumberOfBottles).insert(32, NumberOfBottles);
         }
@@ -174,7 +180,7 @@ public class BottleSong {
         return FirstLine;
     }
 
-    private StringBuilder GetSecondString(int NumberOfBottles, String WrittenNumber) {
+    private StringBuilder getSecondString(int NumberOfBottles, String WrittenNumber) {
         SecondLine.insert(5, WrittenNumber).insert(30 + WrittenNumber.length() - 3, NumberOfBottles);
         if (NumberOfBottles == 1){
             SecondLine.delete(39 + WrittenNumber.length() - 4, 40 + WrittenNumber.length() - 4);
@@ -182,7 +188,7 @@ public class BottleSong {
         return SecondLine;
     }
 
-    private void ClearBuilder(int NumberOfBottles, String WrittenNumber, int bottleTakenAtOnce){
+    private void clearBuilder(int NumberOfBottles, String WrittenNumber, int bottleTakenAtOnce){
         if (NumberOfBottles >= 10) {
             FirstLine.delete(0, 2).delete(30, 32);
         }
