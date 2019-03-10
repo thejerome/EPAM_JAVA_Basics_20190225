@@ -51,7 +51,7 @@ public class WarAndPeaceExercise {
         return ResultTome1234.toString();
     }
 
-    private static HashMap<String, Integer> readFileToHashMap(Path path, HashMap<String, Integer> wordCountMap) throws IOException {
+    private static void readFileToHashMap(Path path, HashMap<String, Integer> wordCountMap) throws IOException {
         final String regex = "[\\s\\d+.?!\\-(),;«»…:„'“\\[\\]]";
             for (String lineTome : Files.readAllLines(path, Charset.forName("Cp1251"))) {
                 String[] words = lineTome.split(regex);
@@ -65,8 +65,6 @@ public class WarAndPeaceExercise {
                     }
                 }
             }
-
-     return wordCountMap;
     }
 
 }
