@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 class WarAndPeaceExercise {
     private Map<String, Integer> result = new HashMap<>();
 
-    static String warAndPeace() {
+    public static String warAndPeace() {
         final Path tome12Path = Paths.get("src", "main", "resources", "WAP12.txt");
         final Path tome34Path = Paths.get("src", "main", "resources", "WAP34.txt");
 
