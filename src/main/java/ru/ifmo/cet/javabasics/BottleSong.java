@@ -31,7 +31,7 @@ package ru.ifmo.cet.javabasics;
  * Нужно ограничить возможность взятия бутылок натуральным число не более 99 бутылок за раз.
  */
 public class BottleSong {
-    private String BottleSong;
+    private String BottleSongStr;
     private int NumberOfBottlesOnTheWall = 99;
     private StringBuilder FirstLine = new StringBuilder(" bottles of beer on the wall,  bottles of beer.");
     private StringBuilder SecondLine = new StringBuilder("Take down and pass around,  bottles of beer on the wall.");
@@ -50,7 +50,7 @@ public class BottleSong {
             NumberOfBottlesOnTheWall = NumberOfBottlesOnTheWall - bottleTakenAtOnce;
         }
         ending(NumberOfBottlesOnTheWall);
-        BottleSong = BottleSongLyrics.toString();
+        BottleSongStr = BottleSongLyrics.toString();
     }
 
     private void ending(int Difference){
@@ -60,7 +60,7 @@ public class BottleSong {
     }
 
     public String getBottleSongLyrics() {
-        return BottleSong;
+        return BottleSongStr;
     }
 
     private String getWrittenNumber(int Number){
@@ -100,6 +100,7 @@ public class BottleSong {
                     break;
                 default:
                     WrittenNumber = "";
+                    break;
             }
         }else {
             switch (Edinitsi) {
@@ -132,6 +133,7 @@ public class BottleSong {
                     break;
                 default:
                     Secondpart = "";
+                    break;
             }
             switch (Desyatki) {
                 case 2:
@@ -160,6 +162,7 @@ public class BottleSong {
                     break;
                 default:
                     Firstpart = "";
+                    break;
             }
             WrittenNumber = Firstpart + Secondpart;
         }
