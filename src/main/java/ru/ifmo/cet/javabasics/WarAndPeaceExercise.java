@@ -1,14 +1,18 @@
 package ru.ifmo.cet.javabasics;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 
 public class WarAndPeaceExercise {
-
-
-
-
 
     public static String warAndPeace() {
         final Path tome12Path = Paths.get("src", "main", "resources", "WAP12.txt");
@@ -23,19 +27,22 @@ public class WarAndPeaceExercise {
 
         Map<String,Integer> words = new HashMap();
         readVolume(tome12Path, words);
-        readVolume(tome34Path);
+        readVolume(tome34Path, words);
         String wordsCounted = toString(words);
-        System.out.println();
+        System.out.println("проверка кириллицы");
+        Locale rusLoc = new Locale("ru","RU");
+        System.out.printf(rusLoc,wordsCounted);
         return wordsCounted;
         //throw new UnsupportedOperationException();
     }
-    private void readVolume(String path, Map<String, Integer> words){
+    private static void readVolume(Path path, Map<String, Integer> words){
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(
-                        new FileInputStream(FILE_NAME), StandardCharsets.UTF_8))){
+                        new FileInputStream(path.toString()), StandardCharsets.UTF_8))){
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] lines = line.toLowerCase().split("\\W");
+                //String[] lines = line.toLowerCase().split("\\W");
+                String[] lines = line.toLowerCase().split("\\s");
                 for(String str:lines){
                     if(words.containsKey(str)){
                         words.put(str, words.get(str) + 1);
@@ -48,20 +55,12 @@ public class WarAndPeaceExercise {
             e.printStackTrace();
         }
     }
-    private Map<String, Integer> splitAndCollect(String line){
-        //String[] lines = line.toLowerCase().split("[\\d\\s]");
-
-        String[] lines = line.toLowerCase().split("\\W");
-        for (String str :lines) {
-
-        }
-    }
-    private String toString(Map<String, Integer> words){
+    private static String toString(Map<String, Integer> words){
         StringBuffer sb = new StringBuffer("");
 
-        Set<Entry<String, Integer>> entries = words.entrySet();
+        Set<Map.Entry<String, Integer>> entries = words.entrySet();
         for(Map.Entry<String, Integer> entry : entries){
-            sb.append( entry.getKey() + " - "  entry.getValue() + "\n");
+            sb.append( entry.getKey() + " - " + entry.getValue() + "\n");
         }
         return sb.toString();
     }
