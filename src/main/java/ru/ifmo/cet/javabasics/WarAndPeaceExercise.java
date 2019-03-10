@@ -1,16 +1,9 @@
 package ru.ifmo.cet.javabasics;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
+import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class WarAndPeaceExercise {
 
@@ -23,31 +16,29 @@ public class WarAndPeaceExercise {
         // TODO Entries in final String should be also sorted by amount and then in alphabetical order if needed.
         // TODO Also omit any word with lengths less than 4 and frequency less than 10
 
-        //private List<String> words = new ArrayList;
+        //throw new UnsupportedOperationException();
 
-        Map<String,Integer> words = new HashMap();
+        Map<String, Integer> words = new HashMap();
         readVolume(tome12Path, words);
         readVolume(tome34Path, words);
-        String wordsCounted = toString(words);
-        System.out.println("проверка кириллицы");
-        Locale rusLoc = new Locale("ru","RU");
-        System.out.printf(rusLoc,wordsCounted);
-        return wordsCounted;
-        //throw new UnsupportedOperationException();
+        omitWords(words);
+        return sortAndString(words);
     }
-    private static void readVolume(Path path, Map<String, Integer> words){
+
+    private static void readVolume(Path path, Map<String, Integer> words) {
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(
-                        new FileInputStream(path.toString()), StandardCharsets.UTF_8))){
+                        new FileInputStream(path.toString()), "cp1251"))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                //String[] lines = line.toLowerCase().split("\\W");
-                String[] lines = line.toLowerCase().split("\\s");
-                for(String str:lines){
-                    if(words.containsKey(str)){
+                String[] lines = line.toLowerCase().split("[^a-zA-Z|^а-яА-Я]");
+                for (String str : lines) {
+                    if (words.containsKey(str)) {
                         words.put(str, words.get(str) + 1);
-                    }else{
-                        words.put(str,1);
+                    } else {
+                        if(str.length() >= 4){
+                            words.put(str, 1);
+                        }
                     }
                 }
             }
@@ -55,13 +46,24 @@ public class WarAndPeaceExercise {
             e.printStackTrace();
         }
     }
-    private static String toString(Map<String, Integer> words){
-        StringBuffer sb = new StringBuffer("");
-
-        Set<Map.Entry<String, Integer>> entries = words.entrySet();
-        for(Map.Entry<String, Integer> entry : entries){
-            sb.append( entry.getKey() + " - " + entry.getValue() + "\n");
+    private static void omitWords(Map<String, Integer> words) {
+        Iterator<Map.Entry<String, Integer>> entryIt = words.entrySet().iterator();
+        while (entryIt.hasNext()) {
+            Map.Entry<String, Integer> entry = entryIt.next();
+                if (entry.getValue() < 10) {
+                    entryIt.remove();
+            }
         }
-        return sb.toString();
+    }
+    private static String sortAndString(Map<String, Integer> words){
+        List<Map.Entry<String, Integer>> sortedWords = new ArrayList<>(words.entrySet());
+        sortedWords.sort(Map.Entry.comparingByKey());
+        sortedWords.sort(Collections.reverseOrder(Map.Entry.comparingByValue()));
+
+        StringBuffer sb = new StringBuffer();
+        for ( Map.Entry<String, Integer> entry : sortedWords         ) {
+            sb.append(entry.getKey() + " - " + entry.getValue() + "\n");
+        }
+        return sb.toString().trim();
     }
 }
