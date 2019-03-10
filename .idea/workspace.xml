@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="68ed32d5-b2c4-47bd-a438-65f292402fc8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ifmo/cet/javabasics/WarAndPeaceExercise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ifmo/cet/javabasics/WarAndPeaceExercise.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.gradle/" />
+    <ignored path="$PROJECT_DIR$/build/" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ru/ifmo/cet/javabasics/WarAndPeaceExerciseTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="177">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/ifmo/cet/javabasics/WarAndPeaceExercise.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#readVolume#0;class#WarAndPeaceExercise#0" />
+                <element signature="method#sortWords#0;class#WarAndPeaceExercise#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/ru/ifmo/cet/javabasics/WarAndPeaceExercise.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-5" />
+    <option name="y" value="217" />
+    <option name="width" value="1260" />
+    <option name="height" value="944" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="EPAM_JAVA_Basics_20190225" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EPAM_JAVA_Basics_20190225" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="EPAM_JAVA_Basics_20190225" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EPAM_JAVA_Basics_20190225" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EPAM_JAVA_Basics_20190225" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EPAM_JAVA_Basics_20190225" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="EPAM_JAVA_Basics_20190225" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EPAM_JAVA_Basics_20190225" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EPAM_JAVA_Basics_20190225" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EPAM_JAVA_Basics_20190225" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="javabasics" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EPAM_JAVA_Basics_20190225" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EPAM_JAVA_Basics_20190225" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EPAM_JAVA_Basics_20190225" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EPAM_JAVA_Basics_20190225" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="EPAM_JAVA_Basics_20190225" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EPAM_JAVA_Basics_20190225" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EPAM_JAVA_Basics_20190225" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EPAM_JAVA_Basics_20190225" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="javabasics" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552160349451" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="WarAndPeaceExerciseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EPAM_JAVA_Basics_20190225.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.ifmo.cet.javabasics.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.ifmo.cet.javabasics" />
+      <option name="MAIN_CLASS_NAME" value="ru.ifmo.cet.javabasics.WarAndPeaceExerciseTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.WarAndPeaceExerciseTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="68ed32d5-b2c4-47bd-a438-65f292402fc8" name="Default Changelist" comment="" />
+      <created>1552074417083</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1552074417083</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="WarAndPeaceExerciseTest - 2019.03.10 at 10h 59m 31s.xml">
+      <configuration name="WarAndPeaceExerciseTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WarAndPeaceExerciseTest - 2019.03.10 at 11h 02m 01s.xml">
+      <configuration name="WarAndPeaceExerciseTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WarAndPeaceExerciseTest - 2019.03.10 at 11h 02m 17s.xml">
+      <configuration name="WarAndPeaceExerciseTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WarAndPeaceExerciseTest - 2019.03.10 at 11h 03m 14s.xml">
+      <configuration name="WarAndPeaceExerciseTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WarAndPeaceExerciseTest - 2019.03.10 at 11h 08m 56s.xml">
+      <configuration name="WarAndPeaceExerciseTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WarAndPeaceExerciseTest - 2019.03.10 at 11h 14m 20s.xml">
+      <configuration name="WarAndPeaceExerciseTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WarAndPeaceExerciseTest - 2019.03.10 at 11h 20m 02s.xml">
+      <configuration name="WarAndPeaceExerciseTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WarAndPeaceExerciseTest - 2019.03.10 at 11h 20m 15s.xml">
+      <configuration name="WarAndPeaceExerciseTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WarAndPeaceExerciseTest - 2019.03.10 at 11h 20m 21s.xml">
+      <configuration name="WarAndPeaceExerciseTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="WarAndPeaceExerciseTest - 2019.03.10 at 11h 20m 25s.xml">
+      <configuration name="WarAndPeaceExerciseTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16423948" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Learn" order="6" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3298731" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3298731" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3298731" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Build" order="10" weight="0.3298731" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3298731" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Gradle" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+    </layout>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/util/Comparator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="149" column="8" selection-start-line="149" selection-start-column="8" selection-end-line="149" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-api/5.2.0/cde9c7381febf2edf35949808b084c982045bafa/junit-jupiter-api-5.2.0-sources.jar!/org/junit/jupiter/api/AssertEquals.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3155">
+          <caret line="180" selection-start-line="180" selection-end-line="180" />
+          <folding>
+            <element signature="e#5361#5362#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/util/HashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="1492" selection-start-line="1492" selection-end-line="1492" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ifmo/cet/javabasics/WAPResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/WAPResult.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ru/ifmo/cet/javabasics/WarAndPeaceExerciseTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ifmo/cet/javabasics/WarAndPeaceExercise.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#readVolume#0;class#WarAndPeaceExercise#0" />
+            <element signature="method#sortWords#0;class#WarAndPeaceExercise#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
