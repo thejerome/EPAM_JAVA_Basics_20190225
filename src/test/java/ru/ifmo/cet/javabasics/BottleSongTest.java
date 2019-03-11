@@ -546,7 +546,7 @@ class BottleSongTest {
                 "11 bottles of beer on the wall, 11 bottles of beer.\n" +
                 "Take four down and pass around, 7 bottles of beer on the wall.\n" +
                 "7 bottles of beer on the wall, 7 bottles of beer.\n" +
-                "Take four down and pass around, 3 bottles of beer on the wall.\n" +
+            "Take four down and pass around, 3 bottles of beer on the wall.\n" +
                 "3 bottles of beer on the wall, 3 bottles of beer.\n" +
                 "Take three down and pass around, no more bottles of beer on the wall.\n" +
                 "No more bottles of beer on the wall, no more bottles of beer.\n" +
