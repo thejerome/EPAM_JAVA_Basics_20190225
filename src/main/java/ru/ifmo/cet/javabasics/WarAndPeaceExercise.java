@@ -1,20 +1,15 @@
 package ru.ifmo.cet.javabasics;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-
-import java.util.regex.MatchResult;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class WarAndPeaceExercise {
@@ -30,23 +25,9 @@ public class WarAndPeaceExercise {
 
         //throw new UnsupportedOperationException();
 
-        String contentWAP12 = "";
-        String contentWAP34 = "";
-        try {
-            contentWAP12 = new String(
-                    Files.readAllBytes(tome12Path),
-                    "Windows-1251");
-
-            contentWAP34 = new String(
-                    Files.readAllBytes(tome34Path),
-                    "Windows-1251");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Map<String, Integer> wordStatistics = countWords(contentWAP12.toLowerCase(),
-                contentWAP34.toLowerCase());
-        wordStatistics.entrySet().removeIf(entry -> entry.getKey().length() < 4 || entry.getValue() < 10);
+        Map<String, Integer> wordStatistics = countWords(tome12Path, tome34Path);
+        wordStatistics.entrySet().removeIf(
+                entry -> entry.getKey().length() < 4 || entry.getValue() < 10);
 
         Map<String, Integer> sortedWordStatistics = sortByValue(wordStatistics);
         StringBuilder stringBuilder = new StringBuilder();
@@ -56,27 +37,44 @@ public class WarAndPeaceExercise {
         return stringBuilder.toString();
     }
 
-    public static Map<String, Integer> countWords(String firstPart, String secondPart){
+    public static Map<String, Integer> countWords(Path tome12Path, Path tome34Path){
         Map<String, Integer> wordCount = new HashMap<>();
         Pattern pattern = Pattern.compile("[а-яa-z]+");
-        Matcher matcher = pattern.matcher(firstPart);
 
-        List<String> wordsFirstPart = pattern
-                .matcher(firstPart)
-                .results()
-                .map(MatchResult::group)
-                .collect(Collectors.toList());
+        List<String> wordsFirstPart = new ArrayList<>();
+        List<String> wordsSecondPart = new ArrayList<>();
 
-        List<String> wordsSecondPart = pattern
-                .matcher(secondPart)
-                .results()
-                .map(MatchResult::group)
-                .collect(Collectors.toList());
+        try(Stream<String> lines = Files.lines(tome12Path, Charset.forName("Windows-1251"))) {
+            List<String> linesLowerCase = lines
+                    .map(line -> line.toLowerCase())
+                    .collect(Collectors.toList());
+
+            linesLowerCase.stream()
+                    .flatMap(x -> Arrays.stream(x.split("[^a-zа-я]")))
+                    .map(pattern::matcher)
+                    .filter(Matcher::matches)
+                    .forEach(matcher -> wordsFirstPart.add(matcher.group()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try(Stream<String> lines = Files.lines(tome34Path, Charset.forName("Windows-1251"))) {
+            List<String> linesLowerCase = lines
+                    .map(line -> line.toLowerCase())
+                    .collect(Collectors.toList());
+
+            linesLowerCase.stream()
+                    .flatMap(x -> Arrays.stream(x.split("[^a-zа-я]")))
+                    .map(pattern::matcher)
+                    .filter(Matcher::matches)
+                    .forEach(matcher -> wordsSecondPart.add(matcher.group()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         wordsFirstPart.forEach(
                 entry -> wordCount.put(entry, 0)
         );
-
         wordsSecondPart.forEach(
                 entry -> wordCount.put(entry, 0)
         );
@@ -84,7 +82,6 @@ public class WarAndPeaceExercise {
         wordsFirstPart.stream()
                 .filter(entry -> wordCount.containsKey(entry))
                 .forEach(item -> wordCount.put(item, wordCount.get(item) + 1));
-
         wordsSecondPart.stream()
                 .filter(entry -> wordCount.containsKey(entry))
                 .forEach(item -> wordCount.put(item, wordCount.get(item) + 1));
