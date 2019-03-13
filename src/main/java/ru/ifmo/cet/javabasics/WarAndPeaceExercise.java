@@ -1,11 +1,6 @@
 package ru.ifmo.cet.javabasics;
 
-import com.google.common.collect.ComparisonChain;
-import com.google.common.collect.Streams;
-
-import java.io.IOException;
 import java.nio.charset.Charset;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
@@ -44,7 +39,7 @@ public class WarAndPeaceExercise {
                             .thenComparing(Map.Entry.comparingByKey()))
                     .forEach(entry -> result.append(entry.getKey()).append(" - ").append(entry.getValue()).append("\n"));
         }
-        
+
         return result;
     }
 
