@@ -41,7 +41,4 @@ public class WarAndPeaceExercise {
 
         return str;
     }
-
-
-
 }
