@@ -27,7 +27,7 @@ public class WarAndPeaceExercise {
             entries = Stream.concat(
                     Files.lines(tome12Path, Charset.forName("cp1251")),
                     Files.lines(tome34Path, Charset.forName("cp1251")))
-                    .map(x -> x.toLowerCase())
+                    .map(String::toLowerCase)
                     .flatMap(s -> Arrays.stream(s.split("[^\\p{L}]")))
                     .filter(s -> s.length() >= 4)
                     .collect(
@@ -41,8 +41,7 @@ public class WarAndPeaceExercise {
                     .compare(o1.getKey(), o2.getKey())
                     .result());
 
-            entries.stream()
-                    .forEach(entry -> stringBuilder
+            entries.forEach(entry -> stringBuilder
                             .append(entry.getKey())
                             .append(" - ")
                             .append(entry.getValue())
