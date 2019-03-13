@@ -1,5 +1,6 @@
 package ru.ifmo.cet.javabasics;
 
+import com.google.common.collect.ComparisonChain;
 import com.google.common.collect.Streams;
 
 import java.io.IOException;
@@ -21,30 +22,39 @@ public class WarAndPeaceExercise {
         final Path tome34Path = Paths.get("src", "main", "resources", "WAP34.txt");
 
         Map<String, Integer> wordFrequency = new HashMap<>();
+        CombinedTextFileStream combinedTextFileStream =
+                new CombinedTextFileStream(Charset.forName("windows-1251"), tome12Path, tome34Path);
 
-        try (Stream<String> stream = Streams.concat(
-                Files.lines(tome12Path, Charset.forName("windows-1251")),
-                Files.lines(tome34Path, Charset.forName("windows-1251"))
-        )) {
+        computeFrequency(wordFrequency, combinedTextFileStream);
+
+        StringBuilder result = buildFrequencyString(wordFrequency);
+
+        return result.toString().trim();
+    }
+
+    private static StringBuilder buildFrequencyString(Map<String, Integer> wordFrequency) {
+        List<Map.Entry<String, Integer>> sortedList = new ArrayList<>(wordFrequency.entrySet());
+        StringBuilder result = new StringBuilder();
+
+        try (Stream<Map.Entry<String, Integer>> stream = sortedList.stream()) {
+            stream
+                    .filter(entry -> entry.getValue() >= MIN_FREQUENCY)
+                    .sorted(Map.Entry.<String, Integer>comparingByValue()
+                            .reversed()
+                            .thenComparing(Map.Entry.comparingByKey()))
+                    .forEach(entry -> result.append(entry.getKey()).append(" - ").append(entry.getValue()).append("\n"));
+        }
+        
+        return result;
+    }
+
+    private static void computeFrequency(Map<String, Integer> wordFrequency, CombinedTextFileStream combinedTextFileStream) {
+        try (Stream<String> stream = combinedTextFileStream.getCombinedStream()) {
             stream
                     .flatMap(line -> Arrays.stream(line.split("[^a-zA-Zа-яА-Я]")))
                     .filter(word -> word.length() >= MIN_LENGTH)
                     .map(String::toLowerCase)
-                    .forEach(word -> wordFrequency.put(word, wordFrequency.get(word) == null ? 1 : wordFrequency.get(word) + 1));
+                    .forEach(word -> wordFrequency.merge(word, 1, Integer::sum));
         }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        List<Map.Entry<String, Integer>> sortedList = new ArrayList<>(wordFrequency.entrySet());
-        StringBuilder result = new StringBuilder();
-
-        sortedList.stream()
-                .filter(entry -> entry.getValue() >= MIN_FREQUENCY)
-                .sorted(Map.Entry.comparingByKey())
-                .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
-                .forEach(entry -> result.append(entry.getKey()).append(" - ").append(entry.getValue()).append("\n"));
-
-        return result.toString().trim();
     }
 }
