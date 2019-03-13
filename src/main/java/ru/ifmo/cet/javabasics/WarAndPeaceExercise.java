@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.StringJoiner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -20,7 +21,7 @@ public class WarAndPeaceExercise {
         final Path tome12Path = Paths.get("src", "main", "resources", "WAP12.txt");
         final Path tome34Path = Paths.get("src", "main", "resources", "WAP34.txt");
 
-        final StringBuilder stringBuilder = new StringBuilder();
+        final StringJoiner stringJoiner = new StringJoiner("\n");
 
         final List<Map.Entry<String, Long>> entries;
         try {
@@ -41,17 +42,13 @@ public class WarAndPeaceExercise {
                     .compare(o1.getKey(), o2.getKey())
                     .result());
 
-            entries.forEach(entry -> stringBuilder
-                            .append(entry.getKey())
-                            .append(" - ")
-                            .append(entry.getValue())
-                            .append("\n"));
+            entries.forEach(entry -> stringJoiner.add(entry.getKey() + " - " + entry.getValue()));
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return stringBuilder.toString().trim();
+        return stringJoiner.toString();
     }
 
 
