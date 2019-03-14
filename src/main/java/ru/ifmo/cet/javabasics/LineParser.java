@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 public class LineParser {
     public List<String> parseLine (String line) {
         return Stream.of (line).
-                flatMap (s -> Arrays.stream (s.split ("\\p{P}|\\p{Z}|\\p{Digit}")).
+                flatMap (s -> Arrays.stream (s.split ("[\\p{P}\\p{Z}\\p{Digit}]")).
                 map (String::toLowerCase)).
                 filter (word -> word.length () >= 4).
                 collect (Collectors.toList ());
