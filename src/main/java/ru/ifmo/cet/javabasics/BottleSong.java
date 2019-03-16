@@ -116,6 +116,9 @@ public class BottleSong {
     private String getTeenNumber(int Edinitsi){
         String WrittenNumber;
         switch (Edinitsi) {
+            case 0:
+                WrittenNumber = "ten ";
+                break;
             case 1:
                 WrittenNumber = "eleven ";
                 break;
