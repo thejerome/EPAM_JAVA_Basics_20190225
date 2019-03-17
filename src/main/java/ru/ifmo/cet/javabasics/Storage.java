@@ -1,6 +1,4 @@
 package ru.ifmo.cet.javabasics;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.*;
 
 public class Storage{
