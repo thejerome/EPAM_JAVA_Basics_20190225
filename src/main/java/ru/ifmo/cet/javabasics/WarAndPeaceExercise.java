@@ -17,11 +17,11 @@ public class WarAndPeaceExercise {
         final Path tome12Path = Paths.get("src", "main", "resources", "WAP12.txt");
         final Path tome34Path = Paths.get("src", "main", "resources", "WAP34.txt");
         StringBuilder a = new StringBuilder();
-        a.append(StreamPath(tome12Path, tome34Path));
+        a.append(streamPath(tome12Path, tome34Path));
         return a.toString();
     }
 
-    private static String StreamPath(Path tome, Path tome2){
+    private static String streamPath(Path tome, Path tome2){
         String a = "";
         try {
             String words = Stream.concat(
