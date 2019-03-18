@@ -5,8 +5,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 
 
@@ -57,16 +56,14 @@ public class WarAndPeaceExercise {
         }
         return answer.substring(0, answer.length()-1);
 
-
-        //throw new UnsupportedOperationException();
     }
 
 }
 
-class WordTable extends Object {
+class WordTable  {
 
-    private String word;
-    private int amount;
+    String word;
+    int amount;
 
     public WordTable(String w, int a) {
         word = w;
