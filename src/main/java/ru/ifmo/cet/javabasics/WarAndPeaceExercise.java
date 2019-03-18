@@ -62,8 +62,8 @@ public class WarAndPeaceExercise {
 
 class WordTable  {
 
-    String word;
-    int amount;
+    private String word;
+    private int amount;
 
     public WordTable(String w, int a) {
         word = w;
@@ -75,14 +75,14 @@ class WordTable  {
     public WordTable(WordTable w) {
         this.word = w.word;
     }
-    String getWord() {
+    public String getWord() {
         return word;
     }
-    int getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    int incAmount() {
+    public int incAmount() {
         return (amount + 1);
     }
     @Override
