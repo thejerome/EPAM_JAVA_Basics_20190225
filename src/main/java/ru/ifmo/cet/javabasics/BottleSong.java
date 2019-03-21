@@ -33,11 +33,58 @@ package ru.ifmo.cet.javabasics;
 public class BottleSong {
 
     public BottleSong(int bottleTakenAtOnce) {
-        //TODO
+        private final int BOTTLES_TAKEN_AT_ONCE;
+        private final int BOTTLES_AT_START = 99;
+
+        public BottleSong(int bottleTakenAtOnce) {
+
+        if (bottleTakenAtOnce < 1 || bottleTakenAtOnce > 99)
+            throw new IllegalArgumentException("The number of bottles should be between 1 and 99.");
+
+        this.BOTTLES_TAKEN_AT_ONCE = bottleTakenAtOnce;
     }
+}
 
     public String getBottleSongLyrics() {
-        //TODO
-        throw new UnsupportedOperationException();
+        int remainingBottlesCount = BOTTLES_AT_START;
+
+        StringBuilder result = new StringBuilder();
+        Formatter formatter = new Formatter();
+
+        while (remainingBottlesCount > BOTTLES_TAKEN_AT_ONCE) {
+            formatter.format("%1$d bottles of beer on the wall, %1$d bottles of beer.\n"
+                    + "Take %2$s down and pass around, %3$d %4$s of beer on the wall.\n",
+                    remainingBottlesCount,
+                    convertNumberToString(BOTTLES_TAKEN_AT_ONCE),
+                    remainingBottlesCount - BOTTLES_TAKEN_AT_ONCE,
+                    remainingBottlesCount - BOTTLES_TAKEN_AT_ONCE > 1 ? "bottles" : "bottle");
+            remainingBottlesCount -= BOTTLES_TAKEN_AT_ONCE;
+        }
+        formatter.format("%1$d %3$s of beer on the wall, %1$d %3$s of beer.\n"
+                + "Take %2$s down and pass around, no more bottles of beer on the wall.\n",
+                remainingBottlesCount,
+                convertNumberToString(remainingBottlesCount),
+                remainingBottlesCount > 1 ? "bottles" : "bottle");
+        result.append(formatter.toString());
+        result.append("No more bottles of beer on the wall, no more bottles of beer.\n" +
+                "Go to the store and buy some more, 99 bottles of beer on the wall.\n");
+        return result.toString();
     }
+}
+
+public String convertNumberToString(int number) {
+
+        final String[] DIGITS = {"zero", "one", "two", "three", "four",
+                "five", "six", "seven", "eight", "nine"};
+
+        final String[] DECIMALS = {"undefined", "ten", "twenty", "thirty", "forty",
+                "fifty", "sixty", "seventy", "eighty", "ninety"};
+
+        final String[] SECOND_DECIMAL = {"undefined", "eleven", "twelve", "thirteen", "fourteen",
+                "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
+
+        return number < 10 ? DIGITS[number] :
+                number % 10 == 0 ? DECIMALS[number / 10] :
+                number < 20 ? SECOND_DECIMAL[number % 10] :
+                DECIMALS[number / 10] + " " + DIGITS[number % 10];
 }
