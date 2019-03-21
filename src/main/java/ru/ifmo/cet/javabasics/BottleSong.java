@@ -32,12 +32,96 @@ package ru.ifmo.cet.javabasics;
  */
 public class BottleSong {
 
+    private static int bottelswas = 99;
+    private static int bottelsis = 99;
+    private String[] oneZeroArray = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+    private String[] tensArray = {"Zero", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
+    private String[] teensArray = {"Zero", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
+
+
     public BottleSong(int bottleTakenAtOnce) {
         //TODO
+        if (bottleTakenAtOnce <= 0 || bottleTakenAtOnce >= 100) {
+            throw new IllegalArgumentException();
+        } else {
+            bottelsis -= bottleTakenAtOnce;
+        }
+
     }
 
     public String getBottleSongLyrics() {
         //TODO
-        throw new UnsupportedOperationException();
+        String result = "";
+        boolean flag = true;
+
+        while (flag == true) {
+
+            int k = bottelswas - bottelsis;
+
+            if (k < 10) {
+
+                if(bottelswas == 1)
+                {
+                    result += "" + bottelswas + " bottle of beer on the wall, " + bottelswas + " bottle of beer.\n" + "Take " + oneZeroArray[k] + " down and pass around, ";
+                }
+                else {
+                    result += "" + bottelswas + " bottles of beer on the wall, " + bottelswas + " bottles of beer.\n" + "Take " + oneZeroArray[k] + " down and pass around, ";
+                }
+                if (bottelsis == 1) {
+                    result += bottelsis + " bottle of beer on the wall.\n";
+                } else if (bottelsis == 0) {
+                    result += "no more bottles of beer on the wall.\n";
+                } else {
+                    result += bottelsis + " bottles of beer on the wall.\n";
+                }
+            } else if (k % 10 == 0) {
+                result += "" + bottelswas + " bottles of beer on the wall, " + bottelswas + " bottles of beer.\n" + "Take " + tensArray[k / 10] + " down and pass around, ";
+                if(bottelsis == 0)
+                {
+                    result += "no more bottles of beer on the wall.\n";
+                }
+                else
+                {
+                    result += + bottelsis + " bottles of beer on the wall.\n";
+                }
+            } else if (k > 10 && k < 20) {
+                result += "" + bottelswas + " bottles of beer on the wall, " + bottelswas + " bottles of beer.\n" + "Take " + teensArray[k % 10] + " down and pass around, ";
+                if(bottelsis == 0)
+                {
+                    result += "no more bottles of beer on the wall.\n";
+                }
+                else
+                {
+                    result += + bottelsis + " bottles of beer on the wall.\n";
+                }
+            } else {
+                result += "" + bottelswas + " bottles of beer on the wall, " + bottelswas + " bottles of beer.\n" + "Take " + tensArray[k / 10] + " " + oneZeroArray[k % 10] + " down and pass around, ";
+                if(bottelsis == 0)
+                {
+                    result += "no more bottles of beer on the wall.\n";
+                }
+                else
+                {
+                    result += + bottelsis + " bottles of beer on the wall.\n";
+                }
+            }
+
+            if (bottelsis == 0) {
+                flag = false;
+                bottelswas = 0;
+                result += "No more bottles of beer on the wall, no more bottles of beer.\n" + "Go to the store and buy some more, 99 bottles of beer on the wall.\n";
+            } else if (bottelsis - k < 0) {
+                bottelswas = bottelsis;
+                bottelsis = 0;
+            } else if (bottelsis - k >= 0) {
+                bottelswas = bottelsis;
+                bottelsis = bottelsis - k;
+            }
+            //throw new UnsupportedOperationException();
+        }
+        bottelswas = 99;
+        bottelsis = 99;
+        return result;
     }
 }
+
