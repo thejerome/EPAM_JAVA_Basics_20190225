@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/EPAM_JAVA_Basics_20190225.iml" filepath="$PROJECT_DIR$/EPAM_JAVA_Basics_20190225.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/EPAM_JAVA_Basics_20190225_main.iml" filepath="$PROJECT_DIR$/.idea/modules/EPAM_JAVA_Basics_20190225_main.iml" group="EPAM_JAVA_Basics_20190225" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/EPAM_JAVA_Basics_20190225_test.iml" filepath="$PROJECT_DIR$/.idea/modules/EPAM_JAVA_Basics_20190225_test.iml" group="EPAM_JAVA_Basics_20190225" />
+    </modules>
+  </component>
+</project>
