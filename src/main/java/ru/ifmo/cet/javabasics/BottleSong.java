@@ -43,7 +43,7 @@ public class BottleSong {
 
         this.BOTTLES_TAKEN_AT_ONCE = bottleTakenAtOnce;
     }
-}
+
 
     public String getBottleSongLyrics() {
         int remainingBottlesCount = BOTTLES_AT_START;
@@ -69,10 +69,10 @@ public class BottleSong {
         result.append("No more bottles of beer on the wall, no more bottles of beer.\n" +
                 "Go to the store and buy some more, 99 bottles of beer on the wall.\n");
         return result.toString();
-}
+    }
 
 
-public String convertNumberToString(int number) {
+    public String convertNumberToString(int number) {
 
         final String[] DIGITS = {"zero", "one", "two", "three", "four",
                 "five", "six", "seven", "eight", "nine"};
@@ -87,4 +87,5 @@ public String convertNumberToString(int number) {
                 number % 10 == 0 ? DECIMALS[number / 10] :
                 number < 20 ? SECOND_DECIMAL[number % 10] :
                 DECIMALS[number / 10] + " " + DIGITS[number % 10];
+    }
 }
