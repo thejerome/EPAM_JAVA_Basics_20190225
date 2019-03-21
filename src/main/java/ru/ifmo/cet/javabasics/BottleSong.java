@@ -32,12 +32,51 @@ package ru.ifmo.cet.javabasics;
  */
 public class BottleSong {
 
+    private static int bottels = 99;
+    private String[] oneZeroArray = {"zero","one","two","three", "four", "five","six","seven","eight","nine"};
+    private String[] tensArray = {"Zero","Ten","Twenty","Thirty","Fourty","Fifty","Sixty","Seventy","Eighty","Ninety"};
+    private String[] teensArray = {"Zero","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen"};
+
+
     public BottleSong(int bottleTakenAtOnce) {
         //TODO
+        if(bottleTakenAtOnce < 0 || bottleTakenAtOnce > 99)
+        {
+            System.out.println("No no no");
+        }
+        else if (bottleTakenAtOnce >= bottels) {
+            getBottleSongLyrics(bottels);
+            getBottleSongLyrics(0);
+            bottels = 99;
+        } else {
+            getBottleSongLyrics(bottleTakenAtOnce);
+            bottels -= bottleTakenAtOnce;
+        }
     }
 
-    public String getBottleSongLyrics() {
+    public void getBottleSongLyrics(int bottelshere)
+    {
         //TODO
-        throw new UnsupportedOperationException();
+        if(bottelshere == 0)
+        {
+            System.out.println("No more bottles of beer on the wall, no more bottles of beer");
+            System.out.println("Go to the store and buy some more");
+            System.out.println("99 bottles of beer on the wall, 99 bottles of beer");
+        }
+        else {
+            if (bottelshere < 10) {
+                System.out.println(bottels + " bottles of beer on the wall, " + bottels + "  bottles of beer");
+                System.out.println("Take " + oneZeroArray[bottelshere] + " down, pass it around, " + (bottels - bottelshere) + " bottles of beer");
+            } else if (bottelshere % 10 == 0) {
+                System.out.println(bottels + " bottles of beer on the wall, " + bottels + "  bottles of beer");
+                System.out.println("Take " + tensArray[bottelshere / 10] + " down, pass it around, " + (bottels - bottelshere) + " bottles of beer");
+            } else if (bottelshere > 10 && bottelshere < 20) {
+                System.out.println(bottels + " bottles of beer on the wall, " + bottels + "  bottles of beer");
+                System.out.println("Take " + teensArray[bottelshere % 10] + " down, pass it around, " + (bottels - bottelshere) + " bottles of beer");
+            } else {
+                System.out.println(bottels + " bottles of beer on the wall, " + bottels + "  bottles of beer");
+                System.out.println("Take " + tensArray[bottelshere / 10] + " " + oneZeroArray[bottelshere % 10] + " down, pass it around, " + (bottels - bottelshere) + " bottles of beer");
+            }
+        }
     }
 }
