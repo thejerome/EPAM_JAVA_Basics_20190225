@@ -1,5 +1,5 @@
 package ru.ifmo.cet.javabasics;
-
+import java.util.Formatter;
 /**
  * Нужно реализовать констурктор и метод, возвращающий слова песни про бутылки на стене.
  * <p>
@@ -32,15 +32,12 @@ package ru.ifmo.cet.javabasics;
  */
 public class BottleSong {
 
+    private final int BOTTLES_TAKEN_AT_ONCE;
+    private final int BOTTLES_AT_START = 99;
+
     public BottleSong(int bottleTakenAtOnce) {
-        private final int BOTTLES_TAKEN_AT_ONCE;
-        private final int BOTTLES_AT_START = 99;
-
-        public BottleSong(int bottleTakenAtOnce) {
-
         if (bottleTakenAtOnce < 1 || bottleTakenAtOnce > 99)
             throw new IllegalArgumentException("The number of bottles should be between 1 and 99.");
-
         this.BOTTLES_TAKEN_AT_ONCE = bottleTakenAtOnce;
     }
 
