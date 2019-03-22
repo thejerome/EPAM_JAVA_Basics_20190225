@@ -47,7 +47,16 @@ public class WarAndPeaceExercise {
 
     public static Map<String, Integer> sortByValue(Map<String, Integer> map) {
         List<Map.Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
-        list.sort(Map.Entry.comparingByValue());
+        list.sort(
+                new Comparator<Map.Entry<String, Integer>>() {
+                    @Override
+                    public int compare(Map.Entry<String, Integer> entry1, Map.Entry<String, Integer> entry2) {
+                        int result = -entry1.getValue().compareTo(entry2.getValue());
+                        if (result == 0)
+                            result = entry1.getKey().compareTo(entry2.getKey());
+                        return result;
+                    }
+                });
         Collections.reverse(list);
 
         Map<String, Integer> result = new LinkedHashMap<>();
@@ -57,7 +66,6 @@ public class WarAndPeaceExercise {
 
         return result;
     }
-
     public static String calculateWordCount(Map<String, Integer> map) {
         StringBuilder sb = new StringBuilder();
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
