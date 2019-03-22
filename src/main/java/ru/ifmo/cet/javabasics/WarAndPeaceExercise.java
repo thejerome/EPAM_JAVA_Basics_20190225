@@ -10,24 +10,16 @@ import java.util.stream.Collectors;
 
 public class WarAndPeaceExercise {
 
-    public static String warAndPeace() {
+    public static String warAndPeace() throws IOException {
+        
         final String CHARSET = "windows-1251";
         final Path tome12Path = Paths.get("src", "main", "resources", "WAP12.txt");
         final Path tome34Path = Paths.get("src", "main", "resources", "WAP34.txt");
 
         final List<String> fullTome = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(new SequenceInputStream
-                (new FileInputStream(tome12Path.toFile()), new FileInputStream(tome34Path.toFile())),
-                Charset.forName(CHARSET)))) {
-
-            String line = null;
-            while ((line = br.readLine()) != null) {
-                fullTome.add(line);
-            }
-        } catch (IOException exc) {
-            exc.printStackTrace();
-        }
+        fullTome.addAll(Files.readAllLines(tome12Path, Charset.forName(CHARSET)));
+        fullTome.addAll(Files.readAllLines(tome34Path, Charset.forName(CHARSET)));
 
         return fullTome.stream()
                 .map(s -> s.split("[^a-zA-Zа-яА-ЯёЁ]"))
