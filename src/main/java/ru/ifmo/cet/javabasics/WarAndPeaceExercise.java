@@ -2,6 +2,9 @@ package ru.ifmo.cet.javabasics;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.util.*;
 
 
 public class WarAndPeaceExercise {
