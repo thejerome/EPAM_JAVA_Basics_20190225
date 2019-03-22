@@ -57,7 +57,6 @@ public class WarAndPeaceExercise {
                         return result;
                     }
                 });
-        Collections.reverse(list);
 
         Map<String, Integer> result = new LinkedHashMap<>();
         for (Map.Entry<String, Integer> entry : list) {
