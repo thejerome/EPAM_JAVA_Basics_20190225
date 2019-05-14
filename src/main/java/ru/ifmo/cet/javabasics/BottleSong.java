@@ -62,7 +62,7 @@ public class BottleSong {
     }
     public String getBottleSongLyrics() {
         throw new UnsupportedOperationException();
-        return song.toString();
+        return;
     }
     private String haveNumber(int i) {
         final String[] digits = {"", "one ", "two ", "three ", "four ", "five ", "six ", "seven ", "eight ", "nine "};
