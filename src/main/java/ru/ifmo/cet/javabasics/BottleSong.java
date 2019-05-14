@@ -32,12 +32,48 @@ package ru.ifmo.cet.javabasics;
  */
 public class BottleSong {
 
-    public BottleSong(int bottleTakenAtOnce) {
-        //TODO
-    }
+    private StringBuilder song;
 
+    public BottleSong(int bottleTakenAtOnce) {
+
+        if (bottleTakenAtOnce > 0 && bottleTakenAtOnce < 100) {
+            song = new StringBuilder();
+            int NumbersOfBottle = 99;
+            song.append(NumbersOfBottle).append(" bottles of beer on the wall, ").append(NumbersOfBottle).append(" bottles of beer.\n");
+            while (NumbersOfBottle > bottleTakenAtOnce) {
+                song.append("Take ").append(haveNumber(bottleTakenAtOnce)).append("down and pass around, ");
+                NumbersOfBottle = NumbersOfBottle - bottleTakenAtOnce;
+                song.append(NumbersOfBottle);
+                if (NumbersOfBottle == 1) {
+                    song.append(" bottle of beer on the wall.\n");
+                    song.append(NumbersOfBottle).append(" bottle of beer on the wall, ").append(NumbersOfBottle).append(" bottle of beer.\n");
+                } else {
+                    song.append(" bottles of beer on the wall.\n");
+                    song.append(NumbersOfBottle).append(" bottles of beer on the wall, ").append(NumbersOfBottle).append(" bottles of beer.\n");
+                }
+            }
+            song.append("Take ").append(haveNumber(NumbersOfBottle)).append("down and pass around, ").append("no more bottles of beer on the wall.\n");
+            song.append("No more bottles of beer on the wall, no more bottles of beer.\n" +
+                    "Go to the store and buy some more, 99 bottles of beer on the wall.\n");
+
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
     public String getBottleSongLyrics() {
-        //TODO
         throw new UnsupportedOperationException();
+        return song.toString();
+    }
+    private String haveNumber(int i) {
+        final String[] digits = {"", "one ", "two ", "three ", "four ", "five ", "six ", "seven ", "eight ", "nine "};
+        final String[] teens = {"", "eleven ", "twelve ", "thirteen ", "fourteen ", "fifteen ", "sixteen ", "seventeen ", "eighteen ", "nineteen "};
+        final String[] tens = {"", "ten ", "twenty ", "thirty ", "forty ", "fifty ", "sixty ", "seventy ", "eighty ", "ninety "};
+        if ((i > 10) && (i < 20)) {
+            return teens[i % 10];
+        }
+        else {
+            return tens[i / 10] + digits[i % 10];
+        }
+
     }
 }
